@@ -1,3 +1,4 @@
 # Developer tools for building the Windows executable
 pyinstaller==6.9.0
 pyinstaller-hooks-contrib==2024.7
+jaraco.text==3.14.0

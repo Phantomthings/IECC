@@ -54,6 +54,12 @@ def build() -> None:
         "--onedir",
         "--name",
         DIST_NAME,
+        # pkg_resources relies on jaraco.text at runtime, but PyInstaller
+        # does not auto-detect it, so we force the import to avoid
+        # ``ModuleNotFoundError: No module named 'jaraco'`` when launching
+        # the packaged executable.
+        "--hidden-import",
+        "jaraco.text",
         *add_data_args,
         str(PROJECT_ROOT / "main.py"),
     ]
