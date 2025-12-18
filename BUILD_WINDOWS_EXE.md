@@ -42,8 +42,11 @@ l'interface web comme d'habitude.
 - L'exécutable utilise le mode `onedir` pour garder les ressources accessibles
   sans extraction lente en mémoire.
 - Les chemins des templates et fichiers statiques sont résolus à l'exécution
-  (compatible PyInstaller) ; il n'est pas nécessaire de placer l'exécutable dans
+  (compatible PyInstaller) ; il n'est pas nécessaire de placer l'exécutable dans
   le répertoire du code source.
+- Les dépendances de build incluent `jaraco.text` pour éviter l'erreur
+  `ModuleNotFoundError: No module named 'jaraco'` provoquée par
+  `pkg_resources` lors du lancement de l'exécutable.
 - Si le port 8000 est occupé, vous pouvez définir la variable d'environnement
   `UVICORN_PORT` puis exécuter le binaire, ou créer un raccourci avec un autre
   port et ajouter `--port 9000` à la ligne de commande.
